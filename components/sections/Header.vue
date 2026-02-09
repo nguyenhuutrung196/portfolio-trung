@@ -8,6 +8,8 @@ gsap.registerPlugin(ScrollToPlugin);
 const isSticky = ref(false);
 const isMenuOpen = ref(false);
 
+const activeSection = ref("#home");
+
 const navLinks = [
 	{ name: "Home", to: "#home" },
 	{ name: "About me", to: "#about" },
@@ -58,6 +60,7 @@ onUnmounted(() => {
 				<ul class="flex gap-5">
 					<li v-for="link in navLinks" :key="link.to">
 						<NuxtLink
+							@click="handleScrollTo($event, link.to)"
 							:to="link.to"
 							class="p-5 text-base font-semibold hover:text-blue-600"
 							active-class="text-blue-600">
