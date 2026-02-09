@@ -1,19 +1,80 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from "vue";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const aboutSection = ref(null) as any;
+const aboutImage = ref(null) as any;
+const aboutText = ref(null) as any;
+
+onMounted(() => {
+	const ctx = gsap.context(() => {
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: aboutSection.value,
+				start: "top center",
+				end: "bottom center",
+				toggleActions: "play none none reverse",
+				markers: false,
+			},
+		});
+
+		tl.from(".about-title-wrapper", {
+			x: -50,
+			opacity: 0,
+			duration: 0.8,
+			ease: "power2.out",
+		})
+			.from(
+				".about-content p, .about-content h5",
+				{
+					y: 30,
+					opacity: 0,
+					stagger: 0.2,
+					duration: 0.8,
+					ease: "power2.out",
+				},
+				"-=0.4",
+			)
+			.from(
+				aboutImage.value,
+				{
+					scale: 1.1,
+					opacity: 0,
+					duration: 1.2,
+					ease: "power2.out",
+				},
+				"-=1",
+			);
+	}, aboutSection.value);
+});
+
+onUnmounted(() => {
+	ScrollTrigger.getAll().forEach((t) => t.kill());
+});
+</script>
 
 <template>
-	<section class="py-10 lg:py-0">
-		<div class="container">
+	<section
+		id="about"
+		ref="aboutSection"
+		class="py-16 lg:py-24 bg-[#FDFCF9] overflow-hidden">
+		<div class="container mx-auto px-6">
 			<div
-				class="grid grid-cols-1 lg:grid-cols-2 items-center gap-5 lg:gap-10">
-				<div>
+				class="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-16">
+				<div class="about-content">
 					<div
-						class="flex flex-col-reverse lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-2">
-						<div class="w-10 h-1 bg-[#F7ED00]"></div>
+						class="about-title-wrapper flex flex-col-reverse lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-3 mb-8">
+						<div class="w-12 h-1 bg-blue-600"></div>
 						<h2 class="text-section">ABOUT ME</h2>
 					</div>
+
 					<div
-						class="text-base mt-5 lg:mt-10 flex flex-col gap-3 text-justify">
-						<h5 class="font-semibold italic">
+						class="flex flex-col gap-6 text-gray-700 leading-relaxed text-justify">
+						<h5
+							class="text-xl font-semibold italic text-gray-900 border-l-4 border-blue-600 pl-4">
 							"Turning Creative Visions into High-Performance
 							Digital Realities."
 						</h5>
@@ -26,28 +87,36 @@
 						</p>
 						<p>
 							Having spearheaded major projects for industry
-							leaders such as Sonha Auto, Gemadept, and Daphaco, I
-							focus on delivering scalable solutions that balance
-							aesthetics with technical excellence. I am a firm
-							believer in the 80/20 principle, prioritizing
-							optimizations that drive the most significant impact
-							on user experience and business growth.
+							leaders such as
+							<span class="font-bold text-black">
+								Sonha Auto, Gemadept, and Daphaco
+							</span>
+							, I focus on delivering scalable solutions that
+							balance aesthetics with technical excellence.
 						</p>
 						<p>
 							Currently, I am expanding my horizons by mastering
-							Nuxt.js and exploring AI-driven development to build
-							more interactive and intelligent web platforms. I am
-							always ready for new challenges that require a blend
-							of logic, creativity, and a "can-do" attitude.
+							<span class="text-blue-600 font-semibold">
+								Nuxt.js
+							</span>
+							and exploring AI-driven development. I am always
+							ready for new challenges that require a blend of
+							logic, creativity, and a "can-do" attitude.
 						</p>
 					</div>
 				</div>
-				<div>
-					<NuxtImg
-						src="/images/about.jpg"
-						class="w-full h-full object-cover"
-						alt="Nguyen Huu Trung"
-						placeholder />
+
+				<div class="relative group">
+					<div
+						class="absolute -bottom-4 -right-4 w-full h-full border-2 border-blue-600 -z-10 transition-transform group-hover:translate-x-2 group-hover:translate-y-2 duration-500"></div>
+
+					<div ref="aboutImage" class="overflow-hidden shadow-2xl">
+						<NuxtImg
+							src="/images/about.jpg"
+							class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							alt="Nguyen Huu Trung Portfolio"
+							placeholder />
+					</div>
 				</div>
 			</div>
 		</div>

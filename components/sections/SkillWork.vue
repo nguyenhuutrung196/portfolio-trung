@@ -1,131 +1,169 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { onMounted, onUnmounted, ref } from "vue";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const skillWorkRoot = ref(null) as any;
+
+const skills = ref([
+	{
+		icon: "fa6-solid:code",
+		title: "Core UI",
+		desc: "TailwindCSS, SASS, Pug, GSAP, SwiperJS",
+	},
+	{
+		icon: "fa6-solid:laptop-code",
+		title: "Library/Framework",
+		desc: "VueJS, Nuxt 3 (Learning)",
+	},
+	{
+		icon: "fa6-solid:brain",
+		title: "CMS",
+		desc: "Wordpress (Elementor, WPBakery), PHP Laravel",
+	},
+	{
+		icon: "fa6-solid:gears",
+		title: "Workflow",
+		desc: "Git, Postman, SEO, GTM, AI-Driven Development",
+	},
+]);
+
+const experiences = ref([
+	{
+		company: "CANHCAM WEBSITE DESIGN AGENCY",
+		role: "FRONTEND DEVELOPER",
+		time: "03/2023 - 04/2025",
+		website: "https://www.canhcam.vn/",
+		tasks: [
+			"Collaborated with Managers to deploy enterprise web solutions.",
+			"Architected websites from design to WordPress CMS integration.",
+			"Optimized page speed for UX and SEO performance.",
+			"Provided CMS training and technical support.",
+		],
+	},
+	{
+		company: "INCOTRADE CO",
+		role: "FRONTEND DEVELOPER",
+		website: "https://incotrade.vn/",
+		time: "05/2025 - Present",
+		tasks: [
+			"Engineered high-performance interfaces using jQuery & Bootstrap.",
+			"Implemented mobile-first responsive designs.",
+			"Collaborated with backend teams for API integration.",
+		],
+	},
+]);
+
+onMounted(() => {
+	const ctx = gsap.context(() => {
+		gsap.from(".skill-item", {
+			scrollTrigger: {
+				trigger: ".skill-grid",
+				start: "top center",
+				toggleActions: "play none none reverse",
+			},
+			y: 50,
+			opacity: 0,
+			stagger: 0.15,
+			duration: 0.8,
+			ease: "power2.out",
+		});
+		gsap.from(".work-item", {
+			scrollTrigger: {
+				trigger: ".work-grid",
+				start: "top center",
+				toggleActions: "play none none reverse",
+			},
+			x: (index) => (index % 2 === 0 ? -100 : 100),
+			opacity: 0,
+			duration: 1,
+			ease: "power3.out",
+		});
+	}, skillWorkRoot.value);
+});
+
+onUnmounted(() => {
+	ScrollTrigger.getAll().forEach((t) => t.kill());
+});
+</script>
 
 <template>
-	<section class="bg-section py-10 lg:py-20">
-		<div class="container">
+	<section
+		id="experience"
+		ref="skillWorkRoot"
+		class="bg-section py-16 lg:py-24 overflow-hidden">
+		<div class="container mx-auto px-6">
 			<div
-				class="flex flex-col-reverse lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-2">
-				<div class="w-10 h-1 bg-[#F7ED00]"></div>
+				class="flex flex-col-reverse lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-3 mb-12">
+				<div class="w-12 h-1 bg-blue-600"></div>
 				<h2 class="text-section">SKILLS</h2>
 			</div>
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-10">
-				<div class="px-5 lg:px-20">
-					<div class="skill-item">
-						<Icon name="fa6-solid:code" size="24" />
-						<div class="flex flex-col">
-							<h3 class="text-base">Core UI</h3>
-							<p class="text-sm">TailwindCSS, SASS</p>
-						</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10 skill-grid">
+				<div
+					v-for="(skill, index) in skills"
+					:key="index"
+					class="skill-item flex items-center gap-4 p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-blue-600 transition-colors group">
+					<div
+						class="text-blue-600 group-hover:scale-110 transition-transform">
+						<Icon :name="skill.icon" size="32" />
 					</div>
-				</div>
-				<div class="px-5 lg:px-20">
-					<div class="skill-item">
-						<Icon name="fa6-solid:code" size="24" />
-						<div class="flex flex-col">
-							<h3 class="text-base">Library/Framework</h3>
-							<p class="text-sm">VueJS</p>
-						</div>
-					</div>
-				</div>
-				<div class="px-5 lg:px-20">
-					<div class="skill-item">
-						<Icon name="fa6-solid:code" size="24" />
-						<div class="flex flex-col">
-							<h3 class="text-base">CMS</h3>
-							<p class="text-sm">
-								Wordpress (Elementor, WP Bakery), PHP Laravel
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="px-5 lg:px-20">
-					<div class="skill-item">
-						<Icon name="fa6-solid:code" size="24" />
-						<div class="flex flex-col">
-							<h3 class="text-base">WORKFLOW</h3>
-							<p class="text-sm">
-								Git, Postman, SEO, GTM, Google PageSpeed,
-								AI-Driven Development
-							</p>
-						</div>
+					<div class="flex flex-col">
+						<h3 class="text-lg font-bold text-gray-900">
+							{{ skill.title }}
+						</h3>
+						<p class="text-sm text-gray-600 max-w-[300px]">
+							{{ skill.desc }}
+						</p>
 					</div>
 				</div>
 			</div>
-			<div class="mt-20">
+
+			<div class="mt-24 mb-12">
 				<div
-					class="flex flex-col-reverse lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-2">
-					<div class="w-10 h-1 bg-[#F7ED00]"></div>
+					class="flex flex-col-reverse lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-3">
+					<div class="w-12 h-1 bg-blue-600"></div>
 					<h2 class="text-section">WORK EXPERIENCE</h2>
 				</div>
 			</div>
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-10">
-				<div class="work-item lg:px-20">
-					<h3>CANH CAM WEBSITE DESIGN AGENCY</h3>
-					<h6>FRONTEND DEVELOPER</h6>
-					<div class="flex items-center my-5">
+
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 work-grid">
+				<div
+					v-for="(work, idx) in experiences"
+					:key="idx"
+					class="work-item lg:px-10">
+					<h3
+						class="text-xl font-black text-gray-900 leading-tight mb-1">
+						{{ work.company }}
+					</h3>
+					<h6
+						class="text-blue-600 font-bold text-sm tracking-widest mb-1">
+						{{ work.role }}
+					</h6>
+					<NuxtLink
+						:to="work.website"
+						target="_blank"
+						class="text-gray-900 underline font-bold text-sm tracking-widest mb-4 hover:text-blue-600 transition-colors">
+						{{ work.website }}
+					</NuxtLink>
+
+					<div class="flex items-center my-6">
 						<div
-							class="badge-timeline p-3 text-nowrap bg-[#1a1a1a] text-white">
-							03/2022 - 04/2025
+							class="badge-timeline px-4 py-2 text-xs font-bold bg-[#1a1a1a] text-white">
+							{{ work.time }}
 						</div>
-						<div
-							class="line-timeline h-1 w-[calc(50%)] bg-[#1a1a1a]"></div>
+						<div class="h-[2px] flex-grow bg-gray-300"></div>
 					</div>
-					<ul class="work-content text-sm text-justify">
-						<li>
-							- Collaborated directly with Account and Project
-							Managers to deploy high-quality web solutions for
-							enterprise clients.
-						</li>
-						<li>
-							- Architected websites from initial design concepts
-							to full WordPress CMS integration.
-						</li>
-						<li>
-							- Optimized page load speeds to enhance User
-							Experience (UX) and boost SEO performance.
-						</li>
-						<li>
-							- Customized system features and maintained backend
-							security to protect administrative data.
-						</li>
-						<li>
-							- Provided comprehensive CMS training and technical
-							support during the project handover phase.
-						</li>
-					</ul>
-				</div>
-				<div class="work-item lg:px-20">
-					<h3>CANH CAM WEBSITE DESIGN AGENCY</h3>
-					<h6>FRONTEND DEVELOPER</h6>
-					<div class="flex items-center my-5">
-						<div
-							class="badge-timeline p-3 text-nowrap bg-[#1a1a1a] text-white">
-							03/2022 - 04/2025
-						</div>
-						<div
-							class="line-timeline h-1 w-[calc(50%)] bg-[#1a1a1a]"></div>
-					</div>
-					<ul class="work-content text-sm text-justify">
-						<li>
-							- Collaborated directly with Account and Project
-							Managers to deploy high-quality web solutions for
-							enterprise clients.
-						</li>
-						<li>
-							- Architected websites from initial design concepts
-							to full WordPress CMS integration.
-						</li>
-						<li>
-							- Optimized page load speeds to enhance User
-							Experience (UX) and boost SEO performance.
-						</li>
-						<li>
-							- Customized system features and maintained backend
-							security to protect administrative data.
-						</li>
-						<li>
-							- Provided comprehensive CMS training and technical
-							support during the project handover phase.
+
+					<ul class="space-y-3">
+						<li
+							v-for="(task, tIdx) in work.tasks"
+							:key="tIdx"
+							class="text-sm text-gray-600 text-justify flex gap-2">
+							<span class="text-blue-600">•</span>
+							{{ task }}
 						</li>
 					</ul>
 				</div>
@@ -136,17 +174,7 @@
 
 <style scoped>
 .bg-section {
-	background: url("/images/background.jpg") no-repeat center center/cover;
-}
-.skill-item {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	margin: 0 auto;
-	justify-content: start;
-}
-
-.skill-item p {
-	max-width: 250px;
+	background: url("../../public/images/background.jpg") no-repeat center
+		center/cover;
 }
 </style>

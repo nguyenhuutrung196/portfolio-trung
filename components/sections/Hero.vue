@@ -39,6 +39,7 @@ onMounted(() => {
 
 <template>
 	<section
+		id="home"
 		ref="heroRoot"
 		class="relative pt-10 lg:pt-20 flex items-center bg-[#1a1a1a] overflow-hidden">
 		<div class="container">
@@ -54,7 +55,7 @@ onMounted(() => {
 						HUU TRUNG
 					</h1>
 					<h2
-						class="reveal-text text-base lg:text-lg text-[#F7ED00] font-light uppercase mb-5">
+						class="reveal-text text-base lg:text-lg text-blue-600 font-light uppercase mb-5">
 						Frontend Developer | UI/UX Specialist
 					</h2>
 				</div>
