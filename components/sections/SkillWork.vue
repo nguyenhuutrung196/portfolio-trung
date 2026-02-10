@@ -5,13 +5,27 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const skillWorkRoot = ref(null) as any;
+const skillWorkRoot = ref<HTMLElement | null>(null);
 
-const skills = ref([
+interface Skill {
+	icon: string;
+	title: string;
+	desc: string;
+}
+
+interface Experience {
+	company: string;
+	role: string;
+	time: string;
+	website: string;
+	tasks: string[];
+}
+
+const skills = ref<Skill[]>([
 	{
 		icon: "fa6-solid:code",
 		title: "Core UI",
-		desc: "TailwindCSS, SASS, Pug, GSAP, SwiperJS",
+		desc: "TailwindCSS, SASS, Pug, GSAP",
 	},
 	{
 		icon: "fa6-solid:laptop-code",
@@ -30,7 +44,7 @@ const skills = ref([
 	},
 ]);
 
-const experiences = ref([
+const experiences = ref<Experience[]>([
 	{
 		company: "CANHCAM WEBSITE DESIGN AGENCY",
 		role: "FRONTEND DEVELOPER",
@@ -81,7 +95,7 @@ onMounted(() => {
 			duration: 1,
 			ease: "power3.out",
 		});
-	}, skillWorkRoot.value);
+	}, skillWorkRoot.value as HTMLElement);
 });
 
 onUnmounted(() => {
@@ -114,7 +128,7 @@ onUnmounted(() => {
 						<h3 class="text-lg font-bold text-gray-900">
 							{{ skill.title }}
 						</h3>
-						<p class="text-sm text-gray-600 max-w-[300px]">
+						<p class="text-base text-gray-900 max-w-[300px]">
 							{{ skill.desc }}
 						</p>
 					</div>
@@ -139,13 +153,13 @@ onUnmounted(() => {
 						{{ work.company }}
 					</h3>
 					<h6
-						class="text-blue-600 font-bold text-sm tracking-widest mb-1">
+						class="text-blue-600 font-bold text-base tracking-widest mb-1">
 						{{ work.role }}
 					</h6>
 					<NuxtLink
 						:to="work.website"
 						target="_blank"
-						class="text-gray-900 underline font-bold text-sm tracking-widest mb-4 hover:text-blue-600 transition-colors">
+						class="text-gray-900 underline font-bold text-base tracking-widest mb-4 hover:text-blue-600 transition-colors">
 						{{ work.website }}
 					</NuxtLink>
 
@@ -161,7 +175,7 @@ onUnmounted(() => {
 						<li
 							v-for="(task, tIdx) in work.tasks"
 							:key="tIdx"
-							class="text-sm text-gray-600 text-justify flex gap-2">
+							class="text-base text-gray-900 text-justify flex gap-2">
 							<span class="text-blue-600">•</span>
 							{{ task }}
 						</li>

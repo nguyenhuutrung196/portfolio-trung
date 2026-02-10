@@ -1,8 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from "vue";
 import gsap from "gsap";
 
-const heroRoot = ref(null);
+const heroRoot = ref<HTMLElement | null>(null);
 
 onMounted(() => {
 	const ctx = gsap.context(() => {
@@ -23,7 +23,7 @@ onMounted(() => {
 					stagger: 0.2,
 				},
 				"-=1",
-			) // Chạy sớm hơn 1s
+			)
 			.from(
 				".cta-btn",
 				{
@@ -33,7 +33,7 @@ onMounted(() => {
 				},
 				"-=0.5",
 			);
-	}, heroRoot.value);
+	}, heroRoot.value as HTMLElement);
 });
 </script>
 

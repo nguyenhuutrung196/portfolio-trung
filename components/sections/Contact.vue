@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
 
-const formData = reactive({
+interface FormContactData {
+	name: string;
+	email: string;
+	phone: string;
+	message: string;
+}
+
+const formData = reactive<FormContactData>({
 	name: "",
 	email: "",
 	phone: "",
 	message: "",
 });
 
-const errors = reactive({
-	name: "",
-	email: "",
-	phone: "",
-	message: "",
-});
+const errors = reactive<Partial<FormContactData>>({});
 
 const isLoading = ref(false);
 const isSuccess = ref(false);
@@ -222,7 +224,7 @@ const handleSubmit = async () => {
 						<Transition name="fade">
 							<div
 								v-if="isSuccess"
-								class="bg-green-100 text-green-700 p-4 rounded-lg text-center text-sm font-medium">
+								class="bg-green-100 text-green-700 p-4 rounded-lg text-center text-base font-medium">
 								Your message has been sent successfully!
 							</div>
 						</Transition>
@@ -235,7 +237,7 @@ const handleSubmit = async () => {
 
 <style scoped>
 .form-input {
-	@apply w-full p-4 bg-gray-50 border rounded-xl outline-none focus:border-blue-600 focus:bg-white transition-all text-sm;
+	@apply w-full p-4 bg-gray-50 border rounded-xl outline-none focus:border-blue-600 focus:bg-white transition-all text-base;
 }
 
 .fade-enter-active,

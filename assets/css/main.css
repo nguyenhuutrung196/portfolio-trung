@@ -11,9 +11,9 @@ body {
 	font-family: "Montserrat", sans-serif;
 }
 
-section[id] {
+/* section[id] {
 	scroll-margin-top: 80px;
-}
+} */
 
 .container {
 	@apply mx-auto px-5 max-w-[1200px];

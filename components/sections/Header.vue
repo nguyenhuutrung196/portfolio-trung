@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -39,11 +40,27 @@ const handleScrollTo = (e, targetId) => {
 };
 
 onMounted(() => {
+	navLinks.forEach((link) => {
+		ScrollTrigger.create({
+			trigger: link.to,
+			start: "top 160px",
+			end: "bottom 160px",
+			scrub: true,
+			onEnter: () => {
+				activeSection.value = link.to;
+			},
+			onEnterBack: () => {
+				activeSection.value = link.to;
+			},
+		});
+	});
+
 	window.addEventListener("scroll", handleScroll);
 });
 
 onUnmounted(() => {
 	window.removeEventListener("scroll", handleScroll);
+	ScrollTrigger.getAll().forEach((t) => t.kill());
 });
 </script>
 
@@ -62,8 +79,12 @@ onUnmounted(() => {
 						<NuxtLink
 							@click="handleScrollTo($event, link.to)"
 							:to="link.to"
-							class="p-5 text-base font-semibold hover:text-blue-600"
-							active-class="text-blue-600">
+							:class="[
+								'p-3 text-2xl font-semibold transition-all duration-300 relative',
+								activeSection === link.to
+									? 'text-blue-600'
+									: 'text-black-800 hover:text-blue-600',
+							]">
 							{{ link.name }}
 						</NuxtLink>
 					</li>
@@ -130,8 +151,12 @@ onUnmounted(() => {
 							@click="handleScrollTo($event, link.to)">
 							<NuxtLink
 								:to="link.to"
-								class="text-2xl font-bold uppercase tracking-tighter hover:text-blue-600 transition-colors"
-								active-class="text-blue-600">
+								:class="[
+									'p-3 text-2xl font-semibold transition-all duration-300 relative',
+									activeSection === link.to
+										? 'text-blue-600'
+										: 'text-black-800 hover:text-blue-600',
+								]">
 								{{ link.name }}
 							</NuxtLink>
 						</li>

@@ -5,9 +5,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const aboutSection = ref(null) as any;
-const aboutImage = ref(null) as any;
-const aboutText = ref(null) as any;
+const aboutSection = ref<HTMLElement | null>(null);
+const aboutImage = ref<HTMLElement | null>(null);
+const aboutText = ref<HTMLElement | null>(null);
 
 onMounted(() => {
 	const ctx = gsap.context(() => {
@@ -48,7 +48,7 @@ onMounted(() => {
 				},
 				"-=1",
 			);
-	}, aboutSection.value);
+	}, aboutSection.value as HTMLElement);
 });
 
 onUnmounted(() => {

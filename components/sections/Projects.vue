@@ -5,10 +5,26 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projectsRoot = ref(null) as any;
+const projectsRoot = ref<HTMLElement | null>(null);
 
-// 1. Dữ liệu Projects từ Resume
-const projects = ref([
+interface Project {
+	title: string;
+	image: string;
+	link: string;
+	details: string[];
+}
+
+interface PersonalProject {
+	title: string;
+	image: string;
+	info: {
+		label: string;
+		value: string;
+	}[];
+}
+
+// Luôn gán kiểu dữ liệu cho ref
+const projects = ref<Project[]>([
 	{
 		title: "Gemadept Corporation | Multi-language Corporate Portal",
 		image: "/images/project-1.png",
@@ -30,25 +46,24 @@ const projects = ref([
 	{
 		title: "Quoc Law | Premium Legal Service UI",
 		image: "/images/project-3.png",
-		link: "https://quoclaw.vn",
+		link: "https://quoclaw.vn/",
 		details: [
-			"Delivered Pixel-perfect Figma conversion using TailwindCSS.",
-			"Managed full-cycle deployment (SSL, Domain, Hosting).",
+			"Delivered Pixel-perfect Figma conversion using TailwindCSS, prioritizing professional typography and branding.",
+			"Managed Full-cycle Deployment (SSL, Domain, Hosting), ensuring 99.9% uptime and secure client data",
 		],
 	},
 	{
-		title: "Sonha Auto | Enterprise Industrial Solution Portal",
-		image: "/images/project-4.png", // Trung nhớ thêm ảnh vào public nhé
+		title: "Sonha Auto | Leading Auto Dealer",
+		image: "/images/project-4.png",
 		link: "https://sonha.com/",
 		details: [
-			"Architected data hierarchy for 1,900+ projects.",
-			"Optimized Industrial SEO & Asset Delivery for a 22-year market leader.",
+			"Architected a Multi-level Data Hierarchy for 1,900+ projects, ensuring seamless navigation across complex industrial categories.",
+			"Optimized Industrial SEO & Asset Delivery for a 22-year market leader, achieving high-speed performance for an extensive product catalog.",
 		],
 	},
 ]);
 
-// 2. Dữ liệu Personal Project
-const personalProject = {
+const personalProject = ref<PersonalProject>({
 	title: "Interactive Nail Art & Studio Platform",
 	image: "/images/project-5.webp",
 	info: [
@@ -70,14 +85,13 @@ const personalProject = {
 		},
 		{
 			label: "Core Concept",
-			value: 'Designing a "Virtual Try-on" logic where users can visualize nail sets on digital hand models —focusing on simplifying the UI for non-tech users.',
+			value: "Designing a 'Virtual Try-on' logic where users can visualize nail sets on digital hand models —focusing on simplifying the UI for non-tech users.",
 		},
 	],
-};
+});
 
 onMounted(() => {
 	const ctx = gsap.context(() => {
-		// Hiệu ứng Grid Projects: Hiện so le (Stagger)
 		gsap.from(".project-card", {
 			scrollTrigger: {
 				trigger: ".projects-grid",
@@ -90,27 +104,7 @@ onMounted(() => {
 			duration: 1,
 			ease: "power3.out",
 		});
-
-		// Hiệu ứng Personal Project: Bay từ 2 phía
-		gsap.from(".personal-img", {
-			scrollTrigger: {
-				trigger: ".personal-trigger",
-				start: "top center",
-			},
-			x: -100,
-			opacity: 0,
-			duration: 1.2,
-		});
-		gsap.from(".personal-content", {
-			scrollTrigger: {
-				trigger: ".personal-trigger",
-				start: "top center",
-			},
-			x: 100,
-			opacity: 0,
-			duration: 1.2,
-		});
-	}, projectsRoot.value);
+	}, projectsRoot.value as HTMLElement);
 });
 
 onUnmounted(() => {
@@ -156,7 +150,7 @@ onUnmounted(() => {
 						<li
 							v-for="(detail, dIdx) in item.details"
 							:key="dIdx"
-							class="text-sm text-gray-600 flex gap-2">
+							class="text-base text-gray-900 flex gap-2">
 							<span class="text-blue-600 font-bold">-</span>
 							{{ detail }}
 						</li>
@@ -164,7 +158,7 @@ onUnmounted(() => {
 					<a
 						:href="item.link"
 						target="_blank"
-						class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest border-b-2 border-blue-600 pb-1 hover:text-blue-600 transition-all">
+						class="inline-flex items-center gap-2 text-base font-bold uppercase tracking-widest border-b-2 border-blue-600 pb-1 hover:text-blue-600 transition-all">
 						Launch Site
 						<Icon name="material-symbols:arrow-outward" />
 					</a>
