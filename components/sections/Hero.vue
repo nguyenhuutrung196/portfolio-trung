@@ -44,7 +44,7 @@ onMounted(() => {
 		class="relative pt-10 lg:pt-20 flex items-center bg-[#1a1a1a] overflow-hidden">
 		<div class="container">
 			<div class="grid grid-cols-1 lg:grid-cols-2 items-center">
-				<div class="order-2 lg:order-2 lg:text-left">
+				<div class="order-2 lg:order-2 lg:text-right">
 					<p class="reveal-text text-white font-normal text-4xl mb-2">
 						HELLO I'M
 					</p>
@@ -55,7 +55,7 @@ onMounted(() => {
 						HUU TRUNG
 					</h1>
 					<h2
-						class="reveal-text text-base lg:text-lg text-blue-600 font-light uppercase mb-5">
+						class="reveal-text text-base lg:text-lg text-amber-300 font-light uppercase mb-5">
 						Frontend Developer | UI/UX Specialist
 					</h2>
 				</div>

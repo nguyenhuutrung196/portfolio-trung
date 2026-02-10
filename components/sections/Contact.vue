@@ -81,7 +81,7 @@ const handleSubmit = async () => {
 				<div class="flex flex-col gap-8 lg:w-1/2">
 					<div
 						class="flex flex-col-reverse lg:flex-row items-center lg:items-end gap-3">
-						<div class="w-12 h-1 bg-blue-600"></div>
+						<div class="w-12 h-1 bg-yellow-500"></div>
 						<h2 class="text-section">Don't forget to contact me</h2>
 					</div>
 
@@ -91,7 +91,7 @@ const handleSubmit = async () => {
 								class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
 								<Icon
 									name="fa6-solid:user"
-									class="text-blue-600" />
+									class="text-yellow-500" />
 							</div>
 							<span class="font-medium text-lg text-black">
 								Nguyễn Hữu Trung
@@ -102,11 +102,11 @@ const handleSubmit = async () => {
 								class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
 								<Icon
 									name="fa6-solid:phone"
-									class="text-blue-600" />
+									class="text-yellow-500" />
 							</div>
 							<NuxtLink
 								to="tel:+84703007904"
-								class="hover:text-blue-600 transition-colors">
+								class="hover:text-yellow-500 transition-colors">
 								+84 70 300 7904
 							</NuxtLink>
 						</li>
@@ -115,11 +115,11 @@ const handleSubmit = async () => {
 								class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
 								<Icon
 									name="fa6-solid:envelope"
-									class="text-blue-600" />
+									class="text-yellow-500" />
 							</div>
 							<NuxtLink
 								to="mailto:nguyenhuutrung.196@gmail.com"
-								class="hover:text-blue-600 transition-colors">
+								class="hover:text-yellow-500 transition-colors">
 								nguyenhuutrung.196@gmail.com
 							</NuxtLink>
 						</li>
@@ -128,7 +128,7 @@ const handleSubmit = async () => {
 								class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
 								<Icon
 									name="fa6-solid:location-dot"
-									class="text-blue-600" />
+									class="text-yellow-500" />
 							</div>
 							<span>Chanh Hung Ward, District 8, HCMC</span>
 						</li>
@@ -213,7 +213,7 @@ const handleSubmit = async () => {
 						<button
 							type="submit"
 							:disabled="isLoading"
-							class="w-full py-4 bg-blue-600 text-white rounded-xl font-bold uppercase tracking-widest hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2">
+							class="w-full py-4 bg-yellow-500 text-white rounded-xl font-bold uppercase tracking-widest hover:bg-yellow-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2">
 							<Icon
 								v-if="isLoading"
 								name="line-md:loading-twotone-loop"
@@ -237,7 +237,7 @@ const handleSubmit = async () => {
 
 <style scoped>
 .form-input {
-	@apply w-full p-4 bg-gray-50 border rounded-xl outline-none focus:border-blue-600 focus:bg-white transition-all text-base;
+	@apply w-full p-4 bg-gray-50 border rounded-xl outline-none focus:border-yellow-600 focus:bg-white transition-all text-base;
 }
 
 .fade-enter-active,

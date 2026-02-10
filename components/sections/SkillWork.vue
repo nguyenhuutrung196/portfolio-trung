@@ -87,7 +87,7 @@ onMounted(() => {
 		gsap.from(".work-item", {
 			scrollTrigger: {
 				trigger: ".work-grid",
-				start: "top center",
+				start: "top 80%",
 				toggleActions: "play none none reverse",
 			},
 			x: (index) => (index % 2 === 0 ? -100 : 100),
@@ -107,21 +107,21 @@ onUnmounted(() => {
 	<section
 		id="experience"
 		ref="skillWorkRoot"
-		class="bg-section py-16 lg:py-24 overflow-hidden">
+		class="bg-section py-10 lg:py-16 overflow-hidden">
 		<div class="container mx-auto px-6">
 			<div
-				class="flex flex-col-reverse lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-3 mb-12">
-				<div class="w-12 h-1 bg-blue-600"></div>
+				class="flex flex-col-reverse lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-3 mb-5">
+				<div class="w-12 h-1 bg-yellow-500"></div>
 				<h2 class="text-section">SKILLS</h2>
 			</div>
 
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10 skill-grid">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-5 skill-grid">
 				<div
 					v-for="(skill, index) in skills"
 					:key="index"
 					class="skill-item flex items-center gap-4 p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-blue-600 transition-colors group">
 					<div
-						class="text-blue-600 group-hover:scale-110 transition-transform">
+						class="text-yellow-500 group-hover:scale-110 transition-transform">
 						<Icon :name="skill.icon" size="32" />
 					</div>
 					<div class="flex flex-col">
@@ -135,12 +135,10 @@ onUnmounted(() => {
 				</div>
 			</div>
 
-			<div class="mt-24 mb-12">
-				<div
-					class="flex flex-col-reverse lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-3">
-					<div class="w-12 h-1 bg-blue-600"></div>
-					<h2 class="text-section">WORK EXPERIENCE</h2>
-				</div>
+			<div
+				class="flex flex-col-reverse lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-3 mt-10 mb-5">
+				<div class="w-12 h-1 bg-yellow-500"></div>
+				<h2 class="text-section">WORK EXPERIENCE</h2>
 			</div>
 
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 work-grid">
@@ -153,13 +151,13 @@ onUnmounted(() => {
 						{{ work.company }}
 					</h3>
 					<h6
-						class="text-blue-600 font-bold text-base tracking-widest mb-1">
+						class="text-yellow-500 font-bold text-base tracking-widest mb-1">
 						{{ work.role }}
 					</h6>
 					<NuxtLink
 						:to="work.website"
 						target="_blank"
-						class="text-gray-900 underline font-bold text-base tracking-widest mb-4 hover:text-blue-600 transition-colors">
+						class="text-gray-900 underline font-bold text-base tracking-widest mb-4 hover:text-yellow-500 transition-colors">
 						{{ work.website }}
 					</NuxtLink>
 
@@ -176,7 +174,7 @@ onUnmounted(() => {
 							v-for="(task, tIdx) in work.tasks"
 							:key="tIdx"
 							class="text-base text-gray-900 text-justify flex gap-2">
-							<span class="text-blue-600">•</span>
+							<span class="text-yellow-500">•</span>
 							{{ task }}
 						</li>
 					</ul>

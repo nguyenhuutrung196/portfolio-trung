@@ -82,8 +82,8 @@ onUnmounted(() => {
 							:class="[
 								'p-3 text-2xl font-semibold transition-all duration-300 relative',
 								activeSection === link.to
-									? 'text-blue-600'
-									: 'text-black-800 hover:text-blue-600',
+									? 'text-yellow-500'
+									: 'text-black-800 hover:text-yellow-500',
 							]">
 							{{ link.name }}
 						</NuxtLink>
@@ -91,13 +91,13 @@ onUnmounted(() => {
 				</ul>
 				<ul class="flex gap-4">
 					<li
-						class="cursor-pointer rounded-full p-2 border border-gray-900 flex-center hover:bg-blue-600 hover:text-white transition-colors">
+						class="cursor-pointer rounded-full p-2 border border-gray-900 flex-center hover:bg-yellow-500 hover:border-yellow-500 hover:text-white transition-colors">
 						<NuxtLink to="tel:+84703007904" class="flex-center">
 							<Icon name="fa6-solid:phone" size="16" />
 						</NuxtLink>
 					</li>
 					<li
-						class="cursor-pointer rounded-full p-2 border border-gray-900 flex-center hover:bg-blue-600 hover:text-white transition-colors">
+						class="cursor-pointer rounded-full p-2 border border-gray-900 flex-center hover:bg-yellow-500 hover:border-yellow-500 hover:text-white transition-colors">
 						<NuxtLink
 							to="mailto:nguyenhuutrung.196@gmail.com"
 							class="flex-center">
@@ -154,8 +154,8 @@ onUnmounted(() => {
 								:class="[
 									'p-3 text-2xl font-semibold transition-all duration-300 relative',
 									activeSection === link.to
-										? 'text-blue-600'
-										: 'text-black-800 hover:text-blue-600',
+										? 'text-yellow-500'
+										: 'text-black-800 hover:text-yellow-500',
 								]">
 								{{ link.name }}
 							</NuxtLink>
@@ -165,12 +165,12 @@ onUnmounted(() => {
 					<div class="mt-auto flex gap-4 border-t pt-8">
 						<NuxtLink
 							to="tel:+84703007904"
-							class="w-12 h-12 rounded-full border flex items-center justify-center hover:bg-blue-600">
+							class="w-12 h-12 rounded-full border flex items-center justify-center hover:bg-yellow-500">
 							<Icon name="fa6-solid:phone" size="18" />
 						</NuxtLink>
 						<NuxtLink
 							to="mailto:nguyenhuutrung.196@gmail.com"
-							class="w-12 h-12 rounded-full border flex items-center justify-center hover:bg-blue-600">
+							class="w-12 h-12 rounded-full border flex items-center justify-center hover:bg-yellow-500">
 							<Icon name="fa6-solid:envelope" size="18" />
 						</NuxtLink>
 					</div>

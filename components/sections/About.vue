@@ -60,21 +60,21 @@ onUnmounted(() => {
 	<section
 		id="about"
 		ref="aboutSection"
-		class="py-16 lg:py-24 bg-[#FDFCF9] overflow-hidden">
+		class="pb-16 lg:pb-24 bg-[#FDFCF9] overflow-hidden">
 		<div class="container mx-auto px-6">
 			<div
 				class="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-16">
 				<div class="about-content">
 					<div
 						class="about-title-wrapper flex flex-col-reverse lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-3 mb-8">
-						<div class="w-12 h-1 bg-blue-600"></div>
+						<div class="w-12 h-1 bg-yellow-500"></div>
 						<h2 class="text-section">ABOUT ME</h2>
 					</div>
 
 					<div
 						class="flex flex-col gap-6 text-gray-700 leading-relaxed text-justify">
 						<h5
-							class="text-xl font-semibold italic text-gray-900 border-l-4 border-blue-600 pl-4">
+							class="text-xl font-semibold italic text-gray-900 border-l-4 border-yellow-500 pl-4">
 							"Turning Creative Visions into High-Performance
 							Digital Realities."
 						</h5>
@@ -96,7 +96,7 @@ onUnmounted(() => {
 						</p>
 						<p>
 							Currently, I am expanding my horizons by mastering
-							<span class="text-blue-600 font-semibold">
+							<span class="text-yellow-500 font-semibold">
 								Nuxt.js
 							</span>
 							and exploring AI-driven development. I am always
@@ -108,7 +108,7 @@ onUnmounted(() => {
 
 				<div class="relative group">
 					<div
-						class="absolute -bottom-4 -right-4 w-full h-full border-2 border-blue-600 -z-10 transition-transform group-hover:translate-x-2 group-hover:translate-y-2 duration-500"></div>
+						class="absolute -bottom-4 -right-4 w-full h-full border-2 border-yellow-500 -z-10 transition-transform group-hover:translate-x-2 group-hover:translate-y-2 duration-500"></div>
 
 					<div ref="aboutImage" class="overflow-hidden shadow-2xl">
 						<NuxtImg

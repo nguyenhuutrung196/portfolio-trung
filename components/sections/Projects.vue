@@ -120,7 +120,7 @@ onUnmounted(() => {
 		<div class="container mx-auto px-6">
 			<div
 				class="flex flex-col-reverse lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-3 mb-12">
-				<div class="w-12 h-1 bg-blue-600"></div>
+				<div class="w-12 h-1 bg-yellow-500"></div>
 				<h2 class="text-section">FEATURED PROJECTS</h2>
 			</div>
 
@@ -141,7 +141,7 @@ onUnmounted(() => {
 						</a>
 					</div>
 					<h5
-						class="text-xl font-bold mb-4 group-hover:text-blue-600 transition-colors">
+						class="text-xl font-bold mb-4 group-hover:text-yellow-500 transition-colors">
 						<NuxtLink :to="item.link" target="_blank">
 							{{ item.title }}
 						</NuxtLink>
@@ -151,14 +151,14 @@ onUnmounted(() => {
 							v-for="(detail, dIdx) in item.details"
 							:key="dIdx"
 							class="text-base text-gray-900 flex gap-2">
-							<span class="text-blue-600 font-bold">-</span>
+							<span class="text-yellow-500 font-bold">-</span>
 							{{ detail }}
 						</li>
 					</ul>
 					<a
 						:href="item.link"
 						target="_blank"
-						class="inline-flex items-center gap-2 text-base font-bold uppercase tracking-widest border-b-2 border-blue-600 pb-1 hover:text-blue-600 transition-all">
+						class="inline-flex items-center gap-2 text-base font-bold uppercase tracking-widest border-b-2 border-yellow-500 pb-1 hover:text-yellow-500 transition-all">
 						Launch Site
 						<Icon name="material-symbols:arrow-outward" />
 					</a>
@@ -168,7 +168,7 @@ onUnmounted(() => {
 			<div class="mt-32 personal-trigger">
 				<div
 					class="flex flex-col-reverse lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-3 mb-12">
-					<div class="w-12 h-1 bg-blue-600"></div>
+					<div class="w-12 h-1 bg-yellow-500"></div>
 					<h2 class="text-section">ONGOING PERSONAL PROJECT</h2>
 				</div>
 
@@ -193,7 +193,7 @@ onUnmounted(() => {
 								v-for="(info, iIdx) in personalProject.info"
 								:key="iIdx"
 								class="text-base text-justify">
-								<span class="font-bold text-blue-600 mr-1">
+								<span class="font-bold text-yellow-500 mr-1">
 									- {{ info.label }}:
 								</span>
 								<span class="text-gray-700">
