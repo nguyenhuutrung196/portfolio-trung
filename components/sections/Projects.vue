@@ -11,6 +11,7 @@ interface Project {
 	title: string;
 	image: string;
 	link: string;
+	review: string;
 	details: string[];
 }
 
@@ -26,39 +27,43 @@ interface PersonalProject {
 // Luôn gán kiểu dữ liệu cho ref
 const projects = ref<Project[]>([
 	{
-		title: "Gemadept Corporation | Multi-language Corporate Portal",
-		image: "/images/project-1.png",
+		title: "Gemadept",
+		image: "/images/project-1.webp",
 		link: "https://www.gemadept.com.vn/",
+		review: "https://www.canhcam.vn/gemadept/",
 		details: [
 			"Architected a Modular CMS (ACF) for independent data management.",
 			"Integrated WPML for global accessibility and high SEO health score.",
 		],
 	},
 	{
-		title: "Daphaco Store | Scalable E-commerce Platform",
-		image: "/images/project-2.png",
-		link: "https://store.daphaco.com",
+		title: "Nature Foods",
+		image: "/images/project-2.webp",
+		link: "https://naturefoods.com.vn/",
+		review: "https://www.canhcam.vn/nature-foods/",
 		details: [
-			"Optimized UI/UX for 1,000+ product variations and fast filtering.",
-			"Refined WooCommerce architecture to handle high-traffic catalogs.",
+			"Optimized UI/UX for 100+ product variations and fast filtering.",
+			"Categorize products into a clear hierarchy and enable product searching by category and name.",
 		],
 	},
 	{
-		title: "Quoc Law | Premium Legal Service UI",
-		image: "/images/project-3.png",
+		title: "Quoc&Associates",
+		image: "/images/project-3.webp",
 		link: "https://quoclaw.vn/",
+		review: "https://www.canhcam.vn/quocassiociates/",
 		details: [
 			"Delivered Pixel-perfect Figma conversion using TailwindCSS, prioritizing professional typography and branding.",
 			"Managed Full-cycle Deployment (SSL, Domain, Hosting), ensuring 99.9% uptime and secure client data",
 		],
 	},
 	{
-		title: "Sonha Auto | Leading Auto Dealer",
-		image: "/images/project-4.png",
+		title: "Son Ha Auto",
+		image: "/images/project-4.webp",
 		link: "https://sonha.com/",
+		review: "https://www.canhcam.vn/son-ha-auto/",
 		details: [
 			"Architected a Multi-level Data Hierarchy for 1,900+ projects, ensuring seamless navigation across complex industrial categories.",
-			"Optimized Industrial SEO & Asset Delivery for a 22-year market leader, achieving high-speed performance for an extensive product catalog.",
+			"Optimized Industrial SEO & Asset Delivery, achieving high-speed performance for an extensive product catalog.",
 		],
 	},
 ]);
@@ -156,10 +161,10 @@ onUnmounted(() => {
 						</li>
 					</ul>
 					<a
-						:href="item.link"
+						:href="item.review"
 						target="_blank"
 						class="inline-flex items-center gap-2 text-base font-bold uppercase tracking-widest border-b-2 border-yellow-500 pb-1 hover:text-yellow-500 transition-all">
-						Launch Site
+						Learn More
 						<Icon name="material-symbols:arrow-outward" />
 					</a>
 				</div>
